@@ -144,7 +144,7 @@ export function getGcode(settings, documents, operations, documentCacheHolder, s
                 .then((preflight) => {
                     let { geometry, openGeometry, tabGeometry, filteredDocIds, docsWithImages } = preflight;
                     console.log('Queueing Worker: ' + op.type + "->" + opIndex);
-                    if (op.type === 'Laser Cut' || op.type === 'Laser Cut Inside' || op.type === 'Laser Cut Outside' || op.type === 'Laser Fill Path') {
+                    if (op.type === 'Laser Cut' || op.type === 'Laser Cut (unoptimized)' || op.type === 'Laser Cut Inside' || op.type === 'Laser Cut Outside' || op.type === 'Laser Fill Path') {
                         laserOps = true;
                         if (startCode === "") startCode = settings.gcodeStart;
                         if (endCode === "") endCode = settings.gcodeEnd;
