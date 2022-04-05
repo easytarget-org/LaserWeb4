@@ -45,7 +45,7 @@ const hide = [
 
 const types = {
     'Laser Cut': { show: ['LaserCut'] },
-    'Laser (unoptimized)': { show: ['LaserCut'] },
+    'Laser Cut (unoptimized)': { show: ['LaserCut'] },
     'Laser Cut Inside': { show: ['LaserCutInside', 'laserDia'] },
     'Laser Cut Outside': { show: ['LaserCutOutside', 'laserDia'] },
     'Laser Fill Path': { show: ['LaserFill', 'lineSpace'] },
