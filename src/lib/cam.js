@@ -71,7 +71,7 @@ function closeClipperPaths(paths) {
 // Try to merge paths. A merged path doesn't cross outside of bounds. Returns array of CamPath.
 // If paths contains both open and closed paths, then the closed paths must be before the open
 // paths within the array.
-function mergePaths(bounds, paths, optimized) {
+function mergePaths(bounds, paths) {
     if (paths.length === 0)
         return [];
 
@@ -117,13 +117,13 @@ function mergePaths(bounds, paths, optimized) {
         paths[closestPathIndex] = [];
         numLeft -= 1;
         let needNew;
-        if (pathIsClosed(path) && optimized) {
+        if (pathIsClosed(path)) {
             needNew = crosses(bounds, currentPoint, path[closestPointIndex]);
             path = path.slice(closestPointIndex, path.length).concat(path.slice(1, closestPointIndex));
             path.push(path[0]);
         } else {
             needNew = true;
-            if (closestReverse && optimized) {
+            if (closestReverse) {
                 path = path.slice();
                 path.reverse();
             }
@@ -225,7 +225,7 @@ export function insideOutside(geometry, cutterDia, isInside, width, stepover, cl
 
 // Compute paths for cut operation on Clipper geometry. Returns array
 // of CamPath.
-export function cut(geometry, openGeometry, climb, optimized = true) {
+export function cut(geometry, openGeometry, climb) {
     let allPaths = [];
     for (let i = 0; i < geometry.length; ++i) {
         let path = geometry[i].slice(0);
@@ -236,9 +236,7 @@ export function cut(geometry, openGeometry, climb, optimized = true) {
     }
     for (let path of openGeometry)
         allPaths.push(path.slice());
-    
-	let result = mergePaths(null, allPaths, optimized);
-	
+    let result = mergePaths(null, allPaths);
     for (let i = 0; i < result.length; ++i)
         result[i].safeToClose = pathIsClosed(result[i].path);
     return result;
