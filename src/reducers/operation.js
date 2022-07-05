@@ -2,7 +2,7 @@
 
 import { getParentIds, object, objectArray } from '../reducers/object'
 
-import arrayMove from 'array-move'
+import { arrayMoveImmutable } from 'array-move'
 
 import { GlobalStore } from '../index';
 
@@ -147,7 +147,7 @@ export const operations = (state, action) => {
                 newIndex = 0;
             if (newIndex > state.length - 1)
                 newIndex = state.length - 1;
-            return arrayMove(state.slice(), index, newIndex);
+            return arrayMoveImmutable(state.slice(), index, newIndex);
         case 'OPERATION_SET_ATTRS':
             if (action.payload.attrs.expanded)
                 state = state.map(op => ({ ...op, expanded: op.id === action.payload.id }));
