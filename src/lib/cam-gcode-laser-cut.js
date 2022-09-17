@@ -164,7 +164,7 @@ export function getLaserCutGcode(props) {
 export function getLaserCutGcodeFromOp(settings, opIndex, op, geometry, openGeometry, tabGeometry, showAlert, done, progress) {
     let ok = true;
 
-    if (op.type !== 'Laser Cut' && op.type !== 'Laser Fill Path') {
+    if (op.type !== 'Laser Cut' && op.type !== 'Laser Cut (unoptimized)' && op.type !== 'Laser Fill Path') {
         if (op.laserDiameter <= 0) {
             showAlert("Laser Diameter must be greater than 0", "danger");
             ok = false;
@@ -209,6 +209,8 @@ export function getLaserCutGcodeFromOp(settings, opIndex, op, geometry, openGeom
     let camPaths = [];
     if (op.type === 'Laser Cut') {
         camPaths = cut(geometry, openGeometry, false);
+    } else if (op.type === 'Laser Cut (unoptimized)') {
+        camPaths = cut(geometry, openGeometry, false, false);
     } else if (op.type === 'Laser Cut Inside') {
         if (op.margin)
             geometry = offset(geometry, -op.margin * mmToClipperScale);
