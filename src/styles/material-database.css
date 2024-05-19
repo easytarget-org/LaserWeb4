@@ -20,15 +20,15 @@
 .details {margin-top: 2px; margin-left: 10px}
 .details .handler {display:flex; flex-direction: row; align-items: center; flex-grow:2}
 .details .handler > * {flex-grow:1}
-.details heading button {margin-left: 5px}
-.details heading {display:flex;margin:0}
-.details heading .summary { display:flex; flex-grow:1}
-.details heading .summary small {margin-left: 1em}
+.details h5 button {margin-left: 5px}
+.details h5 {display:flex;margin:0}
+.details h5 .summary { display:flex; flex-grow:1}
+.details h5 .summary small {margin-left: 1em}
 
-.details heading .summary > * {margin-top:0}
-.details:hover  heading {background: rgba(0, 126, 255, 0.08); border-radius: 5px}
+.details h5 .summary > * {margin-top:0}
+.details:hover  h5 {background: rgba(0, 126, 255, 0.08); border-radius: 5px}
 
-.materialPicker  > section > heading  {display:flex; flex-direction: row; align-items: center; border-bottom: 1px solid #eee; }
+.materialPicker  > section > h5  {display:flex; flex-direction: row; align-items: center; border-bottom: 1px solid #eee; }
 .materialPicker table {font-size: 0.8em; margin-left: 1.2em; width: 98%; margin-top:0.5em}
 .materialPicker table td, 
 .materialPicker table th {padding: 2px !important}
